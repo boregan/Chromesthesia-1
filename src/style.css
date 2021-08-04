@@ -1,0 +1,24 @@
+.App {
+    font-family: sans-serif;
+    text-align: center;
+    height: 100vh;
+  }
+  .note-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .note {
+    height: 80px;
+    width: 40px;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+    margin: 2px;
+    cursor: pointer;
+  }
+  .note:active {
+    background: grey;
+  }
+  
