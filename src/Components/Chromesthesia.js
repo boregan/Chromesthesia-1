@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useState, Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
+// P5 Bits
+import P5Wrapper from 'react-p5-wrapper';
+import sketch from "./sketch";
+
 
 // Tone.js and 
 import Synth from "./Synth";
-import Pixi from "./Pixi";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,22 +42,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Chromesthesia() {
-  const classes = useStyles();
+class Chromesthesia extends Component {
+  constructor() {
+  // const classes = useStyles();
 
-  return (
-    <Grid container component="main" className={classes.root}>
+    super();
+    this.state = {color:[Math.random()*255, Math.random()*255, Math.random()*255]};
+    this.randomColor = this.randomColor.bind(this);
+  }
+
+  randomColor() {
+    this.setState({color:[Math.random()*255, Math.random()*255, Math.random()*255]}
+    )
+  };
+
+  render() {
+    return (
+    <Grid container component="main">
       <CssBaseline />
 
-      <Grid item xs={false} sm={4} md={6} className={classes.image}>
+      <Grid item xs={false} sm={4} md={6}>
+        <button onClick={this.randomColor}>Random Colour</button> 
         <Synth/>
       </Grid>
 
       <Grid item xs={12} sm={8} md={6} component={Paper} elevation={6} square>
-        <div className={classes.paper}> 
-          <Pixi/>       
+        <div>
+          
+          <P5Wrapper sketch={sketch} color={this.state.color}/>       
         </div>
       </Grid>
     </Grid>
-  );
+    );
+  }
 }
+
+export default Chromesthesia;
