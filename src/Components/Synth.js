@@ -1,19 +1,18 @@
 // Material.js piano buttons- how to make 
 
-import React, { useState } from "react";
+import React from "react";
 import "./../style.css";
 import * as Tone from "tone";
-import Pixi from './sketch';
 
-export default function Synth({setSelectedMode}) {
+
+export default function Synth() {
     const synth = new Tone.Synth().toDestination();
 
-    function playNote(note, mode) {
+    function playNote(note) {
         synth.triggerAttackRelease(`${note}4`, "8n");
 
         if(note === "C"){
           console.log('tapped');
-          setSelectedMode("red");
         } else if (note === "D") {
           console.log('othertapped');
         } else if (note === 'E') {
