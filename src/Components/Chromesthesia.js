@@ -42,15 +42,15 @@ class Chromesthesia extends Component {
   playNote(note) {
     synth.triggerAttackRelease(`${note}`, "8n");
 
-    if(note === "C"){;
+    if(note === "C4"){;
       this.randomColor();
-    } else if (note === "D") {
+    } else if (note === "D4") {
       this.randomColor();
-    } else if (note === 'E') {
+    } else if (note === 'E4') {
       this.randomColor();
-    } else if (note === 'G') {
+    } else if (note === 'G4') {
       this.randomColor();
-    } else if (note === 'A') {
+    } else if (note === 'A4') {
       this.randomColor();
     }
   }
@@ -68,7 +68,7 @@ class Chromesthesia extends Component {
     } else if (e.keyCode === 87 ) {
       this.playNote("C#4")
     } else if (e.keyCode === 83 ) {
-      this.playNote("D")
+      this.playNote("D4")
     } else if (e.keyCo4de === 69 ) {
       this.playNote("D#4")
     } else if (e.keyCode === 68 ) {
