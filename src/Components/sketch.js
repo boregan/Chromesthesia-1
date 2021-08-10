@@ -8,7 +8,7 @@ export default function sketch (p) {
 	}
 
 	p.windowResized = () => {
-		p.resizeCanvas(p.windowWidth-500, p.windowHeight - 350);
+		p.resizeCanvas(p.windowWidth -500, p.windowHeight - 350);
 	}
 
 	p.draw = () => {
