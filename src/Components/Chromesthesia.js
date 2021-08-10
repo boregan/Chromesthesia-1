@@ -109,37 +109,37 @@ class Chromesthesia extends Component {
 
       <Grid item xs={12} sm={12} md={12}>
       <div className="note-wrapper">
-          <button className="note white c1" onClick={() => this.playNote("C")}>
+          <button className="note white c1" onClick={() => this.playNote("C4")}>
             C
           </button>
-          <button className="note black" onClick={() => this.playNote("C#")}>
+          <button className="note black" onClick={() => this.playNote("C#4")}>
             C#
           </button>
-          <button className="note white d" onClick={() => this.playNote("D")}>
+          <button className="note white d" onClick={() => this.playNote("D4")}>
             D
           </button>
-          <button className="note black" onClick={() => this.playNote("D#")}>
+          <button className="note black" onClick={() => this.playNote("D#4")}>
             D#
           </button>
-          <button className="note white e" onClick={() => this.playNote("E")}>
+          <button className="note white e" onClick={() => this.playNote("E4")}>
             E
           </button>
-          <button className="note white f" onClick={() => this.playNote("F")}>
+          <button className="note white f" onClick={() => this.playNote("F4")}>
             F
           </button>
-          <button className="note black" onClick={() => this.playNote("F#")}>
+          <button className="note black" onClick={() => this.playNote("F#4")}>
             F#
           </button>
-          <button className="note white g" onClick={() => this.playNote("G")}>
+          <button className="note white g" onClick={() => this.playNote("G4")}>
             G
           </button>
-          <button className="note black" onClick={() => this.playNote("G#")}>
+          <button className="note black" onClick={() => this.playNote("G#4")}>
             G#
           </button>
-          <button className="note white a" onClick={() => this.playNote("A")}>
+          <button className="note white a" onClick={() => this.playNote("A4")}>
             A
           </button>
-          <button className="note black" onClick={() => this.playNote("A#")}>
+          <button className="note black" onClick={() => this.playNote("A#4")}>
             A#
           </button>
           <button className="note white c" onClick={() => this.playNote("C5")}>
