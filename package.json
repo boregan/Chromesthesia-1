@@ -1,6 +1,6 @@
 {
-  "name": "chromesthesia-3",
-  "version": "0.1.0",
+  "name": "chromesthesia",
+  "version": "0.5.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -8,13 +8,16 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-    "pixi": "^0.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hot-keys": "^2.6.2",
+    "react-key-handler": "^1.2.0-beta.3",
     "react-keydown": "^1.9.12",
     "react-p5-wrapper": "^2.4.1",
     "react-responsive": "^9.0.0-beta.3",
     "react-scripts": "4.0.1",
+    "rooks": "^5.4.6",
+    "styled-components": "^5.3.0",
     "tone": "^14.7.77",
     "uninstall": "0.0.0",
     "web-vitals": "^1.0.1"
