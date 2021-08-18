@@ -1,3 +1,5 @@
+import * as Tone from "tone";
+
 export default function sketch (p) {
 	let canvas;
 	let particles = [];
@@ -12,6 +14,8 @@ export default function sketch (p) {
 			particles.push(new Particle())
 		}
 	};
+
+	let phase = 0;
 
 	p.windowResized = () => {
 		p.resizeCanvas(p.windowWidth -500, p.windowHeight - 350);
@@ -53,8 +57,31 @@ export default function sketch (p) {
 			particles[i].moveParticle();
 			particles[i].joinParticles(particles.slice(i));
 		}
+
+		///////////////////////////////////////
 		
+		// DRAWING THREE
+		// beep envelope viz
+		const beepX = p.noise(p.millis() / 500) * p.width;
+		const beepY = p.noise(phase / 50) * p.height;
+		const beepSize = p.height * bleepEnvelope.value;
+		p.stroke("green");
+		p.rect(beepX, beepY, beepSize, beepSize);
 	};
+
+	// Bleep
+	const bleepEnvelope = new Tone.AmplitudeEnvelope({
+		attack: 0.01,
+		decay: 0.4,
+		sustain: 0,
+	}).toDestination();
+
+	const bleep = new Tone.Oscillator("A4").connect(bleepEnvelope);
+	bleep.start();
+
+	const bleepLoop = new Tone.Loop(((time) => {
+		bleepEnvelope.triggerAttack(time);
+	}), "2n").start(0);	
 
 	// this class describes the properties of a single particle.
 	class Particle {
@@ -78,7 +105,7 @@ export default function sketch (p) {
 		// setting the particle in motion.
 		moveParticle() {
 			if(this.x < 0 || this.x > p.width)
-			this.xSpeed*=-1;
+			this.xSpeed*=-2;
 			if(this.y < 0 || this.y > p.height)
 			this.ySpeed*=-1;
 			this.x+=this.xSpeed;
