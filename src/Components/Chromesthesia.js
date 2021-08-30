@@ -37,7 +37,6 @@ class Chromesthesia extends Component {
     // Props to send to P5 Sketch
     this.state = {
       color: 'rgb(0,0,0)',
-      push: ''
     };
 
     // Key bind handler 
@@ -45,12 +44,12 @@ class Chromesthesia extends Component {
   }
 
   // react-hot-keys
-  onKeyDown(keyName) {
-    if (keyName === "a+e") {
-      console.log("Successful")
-      this.playNote(['C4', 'Eb3'])
-    }
-  }
+  // onKeyDown(keyName) {
+  //   if (keyName === "a+e") {
+  //     console.log("Successful")
+  //     // this.setState({color})
+  //   }
+  // }
 
   playNote(note) {
     // synth.voices.forEach( e => {
@@ -80,6 +79,9 @@ class Chromesthesia extends Component {
     };
 
     this.setState({color: colourForNotes[note]});
+
+    // Create a slider that uses setState
+    // lerpColor(c1, c2, amt) to combine two colours 
     
     
     // Chords Colours
@@ -108,7 +110,7 @@ class Chromesthesia extends Component {
       this.playNote("A4");
     } else if (e.keyCode === 85 ) {
       this.playNote("A#4");
-    } else if (e.keyCode === 74 ) { //Single Notes
+    } else if (e.keyCode === 74 ) {
       this.playNote("B4");
     } else if (e.keyCode === 75 ) {
       this.playNote("C5");
@@ -126,16 +128,16 @@ class Chromesthesia extends Component {
     const { classes } = this.props;
   
     return (
-    <Hotkeys
-      keyName="a+e"
-      onKeyDown={this.onKeyDown.bind(this)}
-    >
+    // <Hotkeys
+    //   keyName="a+e"
+    //   onKeyDown={this.onKeyDown.bind(this)}
+    // >
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       
       <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <P5Wrapper sketch={sketch} color={this.state.color} output={this.state.output}/>       
+          <P5Wrapper sketch={sketch} color={this.state.color}/>       
         </div>
       </Grid>
 
@@ -180,7 +182,7 @@ class Chromesthesia extends Component {
         </div>
       </Grid>
     </Grid>
-    </Hotkeys>
+    // </Hotkeys>
     );
   }
 }
