@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -7,6 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 // P5 Bits
 import P5Wrapper from 'react-p5-wrapper';
 import sketch from "./sketch";
+import sketch2 from "./sketch2";
 
 // Tone.js and 
 import * as Tone from "tone";
@@ -37,6 +38,8 @@ class Chromesthesia extends Component {
     // Props to send to P5 Sketch
     this.state = {
       color: 'rgb(0,0,0)',
+      sketch: sketch,
+      rotation: 160
     };
 
     // Key bind handler 
@@ -128,16 +131,23 @@ class Chromesthesia extends Component {
     const { classes } = this.props;
   
     return (
-    // <Hotkeys
-    //   keyName="a+e"
-    //   onKeyDown={this.onKeyDown.bind(this)}
-    // >
     <Grid container component="main" className={classes.root}>
       <CssBaseline />
       
       <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <P5Wrapper sketch={sketch} color={this.state.color}/>       
+          <P5Wrapper sketch={this.state.sketch} color={this.state.color}/>  
+          <button
+            onClick={() =>
+              this.setState({
+                ...this.state,
+                sketch: this.state.sketch === sketch ? sketch2 : sketch
+              })
+              // taken from react-p5-wrapper example
+            }
+          >
+            Sketch Toggle
+          </button>     
         </div>
       </Grid>
 
@@ -182,7 +192,6 @@ class Chromesthesia extends Component {
         </div>
       </Grid>
     </Grid>
-    // </Hotkeys>
     );
   }
 }
