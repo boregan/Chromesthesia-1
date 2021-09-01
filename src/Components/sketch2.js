@@ -4,19 +4,13 @@ export default function sketch2 (p) {
 	
 	let canvas;
 	let particles = [];
-	let phase = 0;
 
 	let slider;
 	let slider2;
 	let slider3;
 
-	let button;
-	let button2;
-	let button3;
-
 	// changeSketch
 	let rrS = 0;
-	let ggS = 0;
 	let bbS = 0;
 	let xnoiseMax = 1.5;
 	let ynoiseMax = 1.5;
@@ -70,7 +64,9 @@ export default function sketch2 (p) {
 		// in the draw function...
 
 		///////////////////////////////////////
+
 		// Constants
+
 		// Particles
 		for(let i = 0; i < particles.length; i++) {
 			particles[i].createParticle();
@@ -98,13 +94,14 @@ export default function sketch2 (p) {
 
 		///////////////////////////////////////
 
+		// Drawings
+
 		// DRAWING ONE 
 		// resets the sketch
 		p.pop();
 
 		rrS = p.map(p.width,0,p.windowWidth,0,255);
 		bbS = p.random(0,255);
-		ggS = 0; //map(height,0,height,0,255); 
 		footStepX = footStepX + p.random(walkMin,walkMax);
 		footStepY = footStepY + p.random(walkMin,walkMax);
 
@@ -137,10 +134,6 @@ export default function sketch2 (p) {
 		p.pop()
 	};
 
-	function resetSketch() {
-		p.removeElements();
-		p.loop();
-	}
 
 	// this class describes the properties of a single particle.
 	class Particle {

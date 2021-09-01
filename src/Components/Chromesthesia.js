@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -12,9 +12,7 @@ import sketch2 from "./sketch2";
 // Tone.js and 
 import * as Tone from "tone";
 import "./../style.css";
-
-// Keybind Handler
-import Hotkeys from 'react-hot-keys';
+import "./style.css";
 
 ///////////////////////////////////////////////////
 
