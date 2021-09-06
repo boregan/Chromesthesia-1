@@ -1,25 +1,11 @@
 .note-wrapper {
   height: 100%;
   display: flex;
+  justify-items: block;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-}
-.note {
-  height: 80px;
-  width: 40px;
-  background: black;
-  border: 2px solid #ccc;
-  border-radius: 2px;
-  margin: 2px;
-  cursor: pointer;
-}
-.note:active {
-  background: grey;
-}
 
-button .note {
-  background-color: white;
 }
 
 ul {
@@ -32,6 +18,27 @@ ul {
   border-radius:1em;
   background:linear-gradient(to bottom right,rgba(0,0,0,0.3),rgba(0,0,0,0)),url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/187/vwood.png);
   box-shadow:0 0 50px rgba(0,0,0,0.5) inset,0 1px rgba(212,152,125,0.2) inset,0 5px 15px rgba(0,0,0,0.5)
+}
+
+.note-wrapper p {
+  color: white;
+}
+.note {
+  height: 80px;
+  width: 40px;
+  background: black;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  margin: 2px;
+  cursor: pointer;
+  display: block;
+}
+.note:active {
+  background: grey;
+}
+
+button .note {
+  background-color: white;
 }
 
 .note {
@@ -59,11 +66,12 @@ ul {
   margin:0 0 0 -1em;
   display: block;
   z-index:5;
+  padding-top: .1em;
   border:1px solid #000;
   border-radius:0 0 3px 3px;
   box-shadow:-1px -1px 2px rgba(255,255,255,0.2) inset,0 -5px 2px 3px rgba(0,0,0,0.6) inset,0 2px 4px rgba(0,0,0,0.5);
   background:linear-gradient(45deg,#222 0%,#555 100%);
-
+  margin-bottom: 2em;
 }
 
 .white:active {
@@ -83,8 +91,8 @@ ul {
   margin:0 0 0 -1em
 }
 
-.c1 {
-  margin: 0 0 0 1em;
+.b {
+  margin: 0 .3em 0 -1em;
 }
 
 ul li:first-child {
@@ -93,4 +101,48 @@ ul li:first-child {
 
 ul li:last-child {
   border-radius:0 5px 5px 5px
+}
+
+.picker {
+  align-items: center;
+  margin: 0 auto;
+  display: grid;
+  /* gap: 1rem;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(4, 4fr); */
+  z-index: 10;
+  margin-top: 4em;
+  margin-left: .56em;
+}
+
+.picker-black {
+  margin: 0;
+  z-index: 10;
+  resize: both;
+  height: 0;
+  margin-left: -0.43em;
+}
+
+div[data-testid="colorpicker-noinput"] {
+  display: none;
+}
+
+.swatch {
+  padding: 5px;
+  background: #fff;
+  border-radius: 1px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+  display: inline-block;
+  cursor: pointer,
+}
+.popover {
+  position: absolute;
+  z-index: 50;
+}
+.cover {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
 }
