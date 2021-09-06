@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component, useRef } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 
-// P5 Bits
+// P5 
 import P5Wrapper from 'react-p5-wrapper';
 import sketch from "./sketch";
 import sketch2 from "./sketch2";
@@ -17,7 +18,14 @@ import { ColorPicker } from 'material-ui-color';
 import "./../style.css";
 import "./style.css";
 
+// HTML to Image
+import * as htmlToImage from 'html-to-image';
+import { toPng } from 'html-to-image';
+import download from 'downloadjs';
+
+// Misc
 import stringifyObject from 'stringify-object';
+import { CSVLink, CSVDownload } from 'react-csv';
 
 ///////////////////////////////////////////////////
 
@@ -28,7 +36,7 @@ const styles = theme => ({
     height: '100vh',
   },
   paper: {
-    margin: theme.spacing(8, 4),
+    margin: theme.spacing(6, 6),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -44,6 +52,7 @@ const styles = theme => ({
 class Chromesthesia extends Component {
   constructor() {
     super();
+    this.wrapper = React.createRef();
     // Props to send to P5 Sketch
     this.state = {
       color: '#D82B2E', // for testing
@@ -87,6 +96,7 @@ class Chromesthesia extends Component {
     this.setState({fill: colourForNotes[note]});
   }
 
+  // Binding keyboard keys to Tone.js 
   handleKey = (e) => {
     if(e.keyCode === 65) {
       this.playNote("C4")
@@ -122,8 +132,24 @@ class Chromesthesia extends Component {
     document.removeEventListener('keydown', this.handleKey);
   }
 
-  // make it have two arguments, 2nd one is idenfitier 
-  // if (identifier) then this.setState({name : ''})
+  pianoToImage() {
+    var domElement = document.getElementById('capture');
+    htmlToImage.toPng(domElement)
+
+      .then(function (dataUrl) {
+        console.log(dataUrl);
+        download(dataUrl, 'chromesthesia-keyboard.png');
+      })
+      .catch(function (error) {
+        console.error('oops, something went wrong!', error);
+      });
+  };
+
+  pianoToCsv() {
+    var csvData = {
+
+    }
+  }
 
   handleChange = (value, key) => {
     // stringify-object to remove double quotes 
@@ -131,8 +157,6 @@ class Chromesthesia extends Component {
       doubleQuotes: false,
     });
     hex = hex.replace(/\'/gi,'');
-    console.log(hex, key);
-
     this.setState({fill: '#' + [hex]});
 
     if(key === "C") {
@@ -164,17 +188,34 @@ class Chromesthesia extends Component {
 
   render() {
     const { classes } = this.props;
-  
+    
+    var data = [
+      ["Note", "Colour"],
+      ["C4", this.state.c],
+      ['C#4', this.state.db],    
+      ['D4' , this.state.d],  
+      ['D#4', this.state.eb],    
+      ['E4' , this.state.e,],  
+      ['F4' , this.state.f],  
+      ['F#4', this.state.gb],    
+      ['G4' , this.state.g],  
+      ['G#4', this.state.ab],   
+      ['A4' , this.state.a,],  
+      ['A#4', this.state.bb],    
+      ['B4' , this.state.b] 
+    ];
+
     return (
-    <Grid container component="main" className={classes.root}>
+    <Grid container component="main" ref={this.wrapper} className={classes.root}>
       <CssBaseline />
       <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <P5Wrapper 
-            sketch ={this.state.sketch} 
-            fill={this.state.fill}
-          />  
-          <button
+          <P5Wrapper sketch ={this.state.sketch} fill={this.state.fill} />  
+          <Grid item lg={3} md={3} xs={3} sm={3} mx="auto"> 
+          <Button
+            size="small"
+            variant="contained"
+            disabled
             onClick={() =>
               this.setState({
                 ...this.state,
@@ -183,18 +224,31 @@ class Chromesthesia extends Component {
               // taken from react-p5-wrapper example
             }
           >
-            Sketch Toggle
-          </button>     
+          Sketch Toggle
+          </Button>
+          <Button variant="outlined" size="small" style={{marginLeft: '2em'}} onClick={this.pianoToImage}>
+            Save Image
+          </Button>
+          <Button variant="outlined" size="small" onClick={this.pianoToCsv}>
+            <CSVLink
+              data={data}
+              filename={"my-file.csv"}
+              target="_blank"
+            >
+              Save Data
+            </CSVLink>
+          </Button>     
+          </Grid>  
         </div>
       </Grid>
       <Grid item xs={12} sm={12} md={12}>
-      <div className="note-wrapper">
+      <div className="note-wrapper" id='note-wrapper'>
+        <div id="capture">
           <button className="note white c1" onClick={() => this.playNote("C4")}>
             <div className="picker">
               <ColorPicker 
                 value={this.state.c} 
                 onChange={(e) => this.handleChange(e, "C")}
-                deferred 
                 disableTextfield 
                 disableAlpha
                 name="C"
@@ -206,7 +260,6 @@ class Chromesthesia extends Component {
               <ColorPicker 
                 value={this.state.db} 
                 onChange={(e) => this.handleChange(e, "C#")}
-                deferred 
                 disableTextfield 
                 disableAlpha
                 name="C#4"
@@ -219,7 +272,6 @@ class Chromesthesia extends Component {
               <ColorPicker 
                 value={this.state.d} 
                 onChange={(e) => this.handleChange(e, "D")}
-                deferred 
                 disableTextfield 
                 disableAlpha
               />
@@ -232,7 +284,6 @@ class Chromesthesia extends Component {
                 className="picker" 
                 value={this.state.eb} 
                 onChange={(e) => this.handleChange(e, "D#")}
-                deferred 
                 disableTextfield 
                 disableAlpha
               />
@@ -245,7 +296,6 @@ class Chromesthesia extends Component {
                 className="picker" 
                 value={this.state.e} 
                 onChange={(e) => this.handleChange(e, "E")}
-                deferred 
                 disableTextfield 
                 disableAlpha
               />
@@ -257,7 +307,6 @@ class Chromesthesia extends Component {
               <ColorPicker 
                 value={this.state.f} 
                 onChange={(e) => this.handleChange(e, "F")}
-                deferred 
                 disableTextfield 
                 disableAlpha
               />
@@ -269,7 +318,6 @@ class Chromesthesia extends Component {
               <ColorPicker 
                 value={this.state.gb} 
                 onChange={(e) => this.handleChange(e, "F#")}
-                deferred 
                 disableTextfield 
                 disableAlpha
               />
@@ -281,7 +329,7 @@ class Chromesthesia extends Component {
                 <ColorPicker 
                   value={this.state.g} 
                   onChange={(e) => this.handleChange(e, "G")}
-                  deferred 
+
                   disableTextfield 
                   disableAlpha
                 />
@@ -293,7 +341,6 @@ class Chromesthesia extends Component {
               <ColorPicker 
                 value={this.state.ab} 
                 onChange={(e) => this.handleChange(e, "G#")}
-                deferred 
                 disableTextfield 
                 disableAlpha
               />
@@ -305,7 +352,6 @@ class Chromesthesia extends Component {
               <ColorPicker 
                 value={this.state.a} 
                 onChange={(e) => this.handleChange(e, "A")}
-                deferred 
                 disableTextfield 
                 disableAlpha
               />
@@ -317,7 +363,6 @@ class Chromesthesia extends Component {
               <ColorPicker 
                 value={this.state.bb} 
                 onChange={(e) => this.handleChange(e, "A#")}
-                deferred 
                 disableTextfield 
                 disableAlpha
               />
@@ -329,12 +374,12 @@ class Chromesthesia extends Component {
               <ColorPicker 
                 value={this.state.b} 
                 onChange={(e) => this.handleChange(e, "B")}
-                deferred 
                 disableTextfield 
                 disableAlpha
               />
             </div>
           </button>
+        </div>
         </div>
       </Grid>
     </Grid>

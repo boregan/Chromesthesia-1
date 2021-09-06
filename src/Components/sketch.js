@@ -65,7 +65,6 @@ export default function sketch (p) {
 	// Figure out how to pass multiple props in ?
 	p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
 		//Make sure the canvas has been created 
-		console.log(newProps)
 		if (canvas) {
 			p.fill(newProps.fill)
 		}
