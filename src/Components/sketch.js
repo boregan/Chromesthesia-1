@@ -11,11 +11,6 @@ export default function sketch (p) {
 		p.frameRate(60);
 		p.colorMode(p.HSB);
 		p.textSize(10);
-
-		// // Particles
-		// for(let i = 0; i<p.width/10;i++){
-		// 	particles.push(new Particle())
-		// }
 	};
 
 	p.windowResized = () => {
@@ -28,17 +23,6 @@ export default function sketch (p) {
 
 		///////////////////////////////////////
 
-		// Constants
-		// Particles
-		// for(let i = 0; i < particles.length; i++) {
-		// 	particles[i].createParticle();
-		// 	particles[i].moveParticle();
-		// 	particles[i].joinParticles(particles.slice(i));
-		// }
-
-		///////////////////////////////////////
-
-		// DRAWING ONE 
 		var sc = 128 + p.sin(p.frameCount/30) * 128;
 		var x = p.width/2 + p.cos(p.frameCount/30) * 120;
 		var y = p.height/2 + p.sin(p.frameCount/30) * 120;
@@ -62,11 +46,10 @@ export default function sketch (p) {
 		p.pop();
 	};
 
-	// Figure out how to pass multiple props in ?
 	p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
 		//Make sure the canvas has been created 
 		if (canvas) {
-			p.fill(newProps.fill)
+			p.fill(newProps.fill);
 		}
 	};
 }

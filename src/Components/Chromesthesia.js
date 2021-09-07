@@ -1,4 +1,4 @@
-import React, { Component, useRef } from 'react';
+import React, { Component } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 import P5Wrapper from 'react-p5-wrapper';
 import sketch from "./sketch";
 import sketch2 from "./sketch2";
+import sketch3 from "./sketch3";
 
 // Tone.js
 import * as Tone from "tone";
@@ -20,12 +21,12 @@ import "./style.css";
 
 // HTML to Image
 import * as htmlToImage from 'html-to-image';
-import { toPng } from 'html-to-image';
+
 import download from 'downloadjs';
 
 // Misc
 import stringifyObject from 'stringify-object';
-import { CSVLink, CSVDownload } from 'react-csv';
+import { CSVLink } from 'react-csv';
 
 ///////////////////////////////////////////////////
 
@@ -145,12 +146,6 @@ class Chromesthesia extends Component {
       });
   };
 
-  pianoToCsv() {
-    var csvData = {
-
-    }
-  }
-
   handleChange = (value, key) => {
     // stringify-object to remove double quotes 
     var hex = stringifyObject(value.hex, {
@@ -210,16 +205,16 @@ class Chromesthesia extends Component {
       <CssBaseline />
       <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <P5Wrapper sketch ={this.state.sketch} fill={this.state.fill} />  
+          <P5Wrapper sketch={this.state.sketch} fill={this.state.fill} />  
           <Grid item lg={3} md={3} xs={3} sm={3} mx="auto"> 
           <Button
             size="small"
             variant="contained"
-            disabled
+            // disabled
             onClick={() =>
               this.setState({
                 ...this.state,
-                sketch: this.state.sketch === sketch ? sketch2 : sketch
+                sketch: this.state.sketch === sketch ? sketch3 : sketch
               })
               // taken from react-p5-wrapper example
             }
