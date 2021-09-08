@@ -101,7 +101,7 @@ class Chromesthesia extends Component {
   // Binding keyboard keys to Tone.js 
   handleKey = (e) => {
     if(e.keyCode === 65) {
-      this.playNote("C4")
+      this.playNote("C4");
     } else if (e.keyCode === 87 ) {
       this.playNote("C#4");
     } else if (e.keyCode === 83 ) {
@@ -145,7 +145,7 @@ class Chromesthesia extends Component {
       .catch(function (error) {
         console.error('oops, something went wrong!', error);
       });
-  };
+  }
 
   handleChange = (value, key) => {
     // stringify-object to remove double quotes 
