@@ -57,7 +57,7 @@ export default function sketch (p) {
         p.beginShape();
             for (let a = 0; a < p.TWO_PI; a+=0.1) {
             let xoff = p.map(p.cos(a+xrot)+1,-1,1,0,xnoiseMax);
-            let yoff =p. map(p.sin(a+yrot)+1,-1,1,0,ynoiseMax);
+            let yoff = p.map(p.sin(a+yrot)+1,-1,1,0,ynoiseMax);
             let r = p.map(p.noise(xoff,yoff), 0, 1, p.random(10, 50), p.random (100,400));
             let x = r * p.cos(a);
             let y = r * p.sin(a);

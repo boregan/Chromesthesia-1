@@ -3,6 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import { Typography } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 // P5 
@@ -180,6 +181,25 @@ class Chromesthesia extends Component {
       this.setState({b: '#' + [hex]});
     } 
   };
+  
+  // handleSketches = (level) => {    
+  //   switch(level) {
+  //     case 0: 
+  //     this.setState({
+  //       ...this.state,
+  //       sketch: this.state.sketch === sketch ? sketch3 : sketch
+  //   });
+  //   console.log("Successful")
+  //   break;
+  //   case 2: 
+  //   this.setState({
+  //     ...this.state,
+  //     sketch: this.state.sketch === sketch2 ? sketch3 : sketch
+  //   });
+  //   console.log("Successful 3")
+  //   break;
+  // }
+  // }
 
   render() {
     const { classes } = this.props;
@@ -206,21 +226,13 @@ class Chromesthesia extends Component {
       <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <P5Wrapper sketch={this.state.sketch} fill={this.state.fill} />  
-          <Grid item lg={3} md={3} xs={3} sm={3} mx="auto"> 
-          <Button
-            size="small"
-            variant="contained"
-            // disabled
-            onClick={() =>
-              this.setState({
-                ...this.state,
-                sketch: this.state.sketch === sketch ? sketch3 : sketch
-              })
-              // taken from react-p5-wrapper example
-            }
-          >
-          Sketch Toggle
-          </Button>
+          <Grid item lg={8} md={8} xs={8} sm={8} mx="auto"> 
+
+          <Typography variant="overline" display="block">Sketches</Typography>
+          <Button size="small" variant="contained" onClick={() => this.setState({sketch: sketch})}> 1</Button>
+          <Button size="small" variant="contained" onClick={() => this.setState({sketch: sketch2})}> 2</Button>
+          <Button size="small" variant="contained" onClick={() => this.setState({sketch: sketch3})}> 3</Button>
+ 
           <Button variant="outlined" size="small" style={{marginLeft: '2em'}} onClick={this.pianoToImage}>
             Save Image
           </Button>
