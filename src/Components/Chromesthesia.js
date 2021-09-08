@@ -55,9 +55,9 @@ class Chromesthesia extends Component {
   constructor() {
     super();
     this.wrapper = React.createRef();
+
     // Props to send to P5 Sketch
     this.state = {
-      color: '#D82B2E', // for testing
       fill: '#D82B2E',
       sketch: sketch,
       
@@ -182,25 +182,6 @@ class Chromesthesia extends Component {
     } 
   };
   
-  // handleSketches = (level) => {    
-  //   switch(level) {
-  //     case 0: 
-  //     this.setState({
-  //       ...this.state,
-  //       sketch: this.state.sketch === sketch ? sketch3 : sketch
-  //   });
-  //   console.log("Successful")
-  //   break;
-  //   case 2: 
-  //   this.setState({
-  //     ...this.state,
-  //     sketch: this.state.sketch === sketch2 ? sketch3 : sketch
-  //   });
-  //   console.log("Successful 3")
-  //   break;
-  // }
-  // }
-
   render() {
     const { classes } = this.props;
     
