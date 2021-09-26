@@ -239,7 +239,6 @@ class Chromesthesia extends Component {
                 onChange={(e) => this.handleChange(e, "C")}
                 disableTextfield 
                 disableAlpha
-                name="C"
               />
             </div>
           </button>
@@ -250,7 +249,6 @@ class Chromesthesia extends Component {
                 onChange={(e) => this.handleChange(e, "C#")}
                 disableTextfield 
                 disableAlpha
-                name="C#4"
               />
               </div>
           </button>
@@ -269,7 +267,6 @@ class Chromesthesia extends Component {
           <button className="note black" onClick={() => this.playNote("D#4")}>
           <div className="picker-black">
               <ColorPicker 
-                className="picker" 
                 value={this.state.eb} 
                 onChange={(e) => this.handleChange(e, "D#")}
                 disableTextfield 
@@ -281,7 +278,6 @@ class Chromesthesia extends Component {
           <button className="note white e" onClick={() => this.playNote("E4")}>
           <div className="picker">
               <ColorPicker 
-                className="picker" 
                 value={this.state.e} 
                 onChange={(e) => this.handleChange(e, "E")}
                 disableTextfield 
@@ -317,7 +313,6 @@ class Chromesthesia extends Component {
                 <ColorPicker 
                   value={this.state.g} 
                   onChange={(e) => this.handleChange(e, "G")}
-
                   disableTextfield 
                   disableAlpha
                 />
