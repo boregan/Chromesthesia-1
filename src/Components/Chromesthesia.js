@@ -18,11 +18,9 @@ import * as Tone from "tone";
 // Colour Picker 
 import { ColorPicker } from 'material-ui-color';
 import "./../style.css";
-import "./style.css";
 
 // HTML to Image
 import * as htmlToImage from 'html-to-image';
-
 import download from 'downloadjs';
 
 // Misc
@@ -61,7 +59,7 @@ class Chromesthesia extends Component {
       fill: '#D82B2E',
       sketch: sketch,
       
-      // Default Colours
+      // Default Colour Values
       c : '#D82B2E',
       db: '#DB6335',
       d : '#E78D37',
@@ -130,6 +128,7 @@ class Chromesthesia extends Component {
   componentDidMount() {
     document.addEventListener('keydown', this.handleKey);
   }
+  
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKey);
   }
@@ -153,7 +152,6 @@ class Chromesthesia extends Component {
       doubleQuotes: false,
     });
     hex = hex.replace(/\'/gi,'');
-    this.setState({fill: '#' + [hex]});
 
     if(key === "C") {
       this.setState({c: '#' + [hex]});
@@ -184,7 +182,6 @@ class Chromesthesia extends Component {
   
   render() {
     const { classes } = this.props;
-    
     var data = [
       ["Note", "Colour"],
       ["C4", this.state.c],
@@ -202,7 +199,7 @@ class Chromesthesia extends Component {
     ];
 
     return (
-    <Grid container component="main" ref={this.wrapper} className={classes.root}>
+    <Grid container component="main" ref={this.wrapper} >
       <CssBaseline />
       <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
         <div className={classes.paper}>
