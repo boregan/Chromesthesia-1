@@ -146,10 +146,6 @@ export default function sketch2 (p) {
 	};
 
 	p.draw = () => {
-		// NOTE: Do not use setState in the draw function or in functions that are executed
-		// in the draw function...
-
-		///////////////////////////////////////
 		p.blendMode(p.BLEND);
 		p.background(255, 20);
 

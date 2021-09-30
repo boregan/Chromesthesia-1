@@ -18,11 +18,6 @@ export default function sketch (p) {
 	};
 
 	p.draw = () => {
-		// NOTE: Do not use setState in the draw function or in functions that are executed
-		// in the draw function...
-
-		///////////////////////////////////////
-
 		var sc = 128 + p.sin(p.frameCount/30) * 128;
 		var x = p.width/2 + p.cos(p.frameCount/30) * 120;
 		var y = p.height/2 + p.sin(p.frameCount/30) * 120;

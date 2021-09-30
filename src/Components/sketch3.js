@@ -30,10 +30,6 @@ export default function sketch3 (p) {
 	};
 
 	p.draw = () => {
-		// NOTE: Do not use setState in the draw function or in functions that are executed
-		// in the draw function...
-
-		///////////////////////////////////////
         rrS = p.map(p.width, 0, p.windowWidth, 0, 255);
         bbS = p.random(0,100);
         footStepX = footStepX + p.random(walkMin,walkMax);
