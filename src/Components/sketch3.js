@@ -1,7 +1,5 @@
 import "./../style.css";
 
-// Adaptation of https://editor.p5js.org/EdCavett/sketches/DRvCPgi-
-
 export default function sketch (p) {
 	let canvas;
 
