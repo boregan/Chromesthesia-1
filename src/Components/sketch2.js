@@ -23,14 +23,6 @@ export default function sketch2 (p) {
 	let d;
 	let sw;
 
-	function drawPts(){
-		for (n = 0; n < numDashers; n++) {
-		  p.stroke(255);
-		  p.strokeWeight(2);
-		  p.point(pts[n][0], pts[n][1]);
-		}
-	}
-
 	p.setup = () => {
 		p.remove();
 		p.loop();
