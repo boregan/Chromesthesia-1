@@ -206,7 +206,7 @@ class Chromesthesia extends Component {
           <P5Wrapper sketch={this.state.sketch} p5Colour={this.state.p5Colour} />  
           <Grid item lg={8} md={8} xs={8} sm={8} mx="auto"> 
 
-          <Typography variant="overline" display="block">Sketches</Typography>
+          <Typography variant="overline" display="block">Form-Constants</Typography>
           <Button size="small" variant="contained" onClick={() => this.setState({sketch: sketch})}> 1</Button>
           <Button size="small" variant="contained" onClick={() => this.setState({sketch: sketch2})}> 2</Button>
           <Button size="small" variant="contained" onClick={() => this.setState({sketch: sketch3})}> 3</Button>
