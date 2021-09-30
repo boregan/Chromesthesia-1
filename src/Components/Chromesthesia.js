@@ -56,7 +56,7 @@ class Chromesthesia extends Component {
 
     // Props to send to P5 Sketch
     this.state = {
-      fill: '#D82B2E',
+      p5Colour: '#D82B2E',
       sketch: sketch,
       
       // Default Colour Values
@@ -93,7 +93,7 @@ class Chromesthesia extends Component {
       'A#4':  this.state.bb,
       'B4' :  this.state.b,
     };
-    this.setState({fill: colourForNotes[note]});
+    this.setState({p5Colour: colourForNotes[note]});
   }
 
   // Binding keyboard keys to Tone.js 
@@ -203,7 +203,7 @@ class Chromesthesia extends Component {
       <CssBaseline />
       <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
         <div className={classes.paper}>
-          <P5Wrapper sketch={this.state.sketch} fill={this.state.fill} />  
+          <P5Wrapper sketch={this.state.sketch} p5Colour={this.state.p5Colour} />  
           <Grid item lg={8} md={8} xs={8} sm={8} mx="auto"> 
 
           <Typography variant="overline" display="block">Sketches</Typography>

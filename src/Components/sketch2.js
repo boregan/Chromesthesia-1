@@ -164,7 +164,7 @@ export default function sketch2 (p) {
 	p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
 		//Make sure the canvas has been created 
 		if (canvas) {
-			p.stroke(newProps.fill);
+			p.stroke(newProps.p5Colour);
 
 		}
 	};

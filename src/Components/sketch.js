@@ -49,7 +49,7 @@ export default function sketch (p) {
 	p.myCustomRedrawAccordingToNewPropsHandler = (newProps) => {
 		//Make sure the canvas has been created 
 		if (canvas) {
-			p.fill(newProps.fill);
+			p.fill(newProps.p5Colour);
 		}
 	};
 }
