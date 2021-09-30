@@ -1,22 +1,10 @@
 # Chromaesthesia 
 
-A chromaesthesia consistency test research tool
-
-## Available Scripts
-
-In the project directory, you can run:
-
-``` npm install```
-
-
-``` npm start```
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.
+A Chromaesthesia Mapping Tool for Consistency Testing
 
 Prerequisite: [Node.js](https://nodejs.org/en/download/)
+
+## Available Scripts
 
 In Windows command prompt or Mac's terminal, navigate to the project directory. 
 From here you can run:
